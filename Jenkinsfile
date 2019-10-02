@@ -23,11 +23,6 @@ pipeline{
                                 sh "mvn install"
                         }
                 }
-		        stage('--Sonar Report--'){
-                        steps{
-                                sh "mvn sonar:sonar"
-                        }
-                }
 		        stage('--Surefire Report--'){
                         steps{
                                 sh "mvn surefire-report:report"
