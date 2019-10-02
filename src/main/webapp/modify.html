@@ -1,0 +1,192 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <title>MotoGP - Modify</title>
+</head>
+
+<body background="background2.png">
+    <br>
+    <div class="container">
+        
+        <div>
+            <hr></hr>
+            <h1 class="text-centre text-primary">MotoGP Manager - Modify</h1>
+
+            <div class="input-group mb-2">
+                <input type="button" class="btn btn-outline-primary col-12" onclick="homePage()" value="Click To Go Home"></input>
+            </div>
+        </div>
+
+
+        <!-- Riders Section -->
+        <div>
+            <hr></hr>
+            <h3 class="text-centre text-primary">Riders</h3>
+
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Rider ID</span>
+                </div>
+                <input type="text" class="form-control col-12" id="riderIDBox" placeholder=" - - - Please Enter RiderID - - - ">
+            </div>
+
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">First Name</span>
+                </div>
+                <input type="text" class="form-control col-12" id="firstNameBox" placeholder=" - - - Please Enter Rider First Name - - - ">
+            </div>
+
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Last Name</span>
+                </div>
+                <input type="text" class="form-control col-12" id="lastNameBox" placeholder=" - - - Please Enter Rider Last Name - - - ">
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Race Number</span>
+                </div>
+                <input type="text" class="form-control col-12" id="raceNumberBox" placeholder=" - - - Please Enter Rider Race Number - - - ">
+            </div>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Team ID</span>
+                </div>
+                <input type="text" class="form-control col-12" id="teamIDBox" placeholder=" - - - Please Enter Rider Team ID - - - ">
+            </div>
+
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group mr-2" role="group">
+                    <input type="button" class="btn btn-outline-primary " onclick="createRider()" value="Create Rider"></input>
+                </div>
+                <div class="btn-group mr-2" role="group">
+                    <input type="button" class="btn btn-outline-primary" onclick="updateRider()" value="Update Rider"></input>
+                </div>
+                <div class="btn-group mr-2" role="group">
+                    <input type="button" class="btn btn-outline-primary" onclick="deleteRider()" value="Delete Rider"></input>
+                    <Input type="number" id="deleteRiderBox">
+                    </input>
+                </div>
+
+            </div>
+
+            <!-- Teams Section -->
+            <div>
+                <hr></hr>
+                <h3 class="text-centre text-primary">Teams</h3>
+
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Team ID</span>
+                    </div>
+                    <input type="text" class="form-control col-12" id="teamIDBox0" placeholder=" - - - Please Enter TeamID - - - ">
+                </div>
+
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Team Name</span>
+                    </div>
+                    <input type="text" class="form-control col-12" id="teamNameBox0" placeholder=" - - - Please Enter Team Name - - - ">
+                </div>
+
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Motorcycle Brand</span>
+                    </div>
+                    <input type="text" class="form-control col-12" id="motorcycleBrandBox0" placeholder=" - - - Please Enter Motorcycle Brand - - - ">
+                </div>
+
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="btn-group mr-2" role="group">
+                        <input type="button" class="btn btn-outline-primary " onclick="createTeam()" value="Create Team"></input>
+                    </div>
+                    <div class="btn-group mr-2" role="group">
+                        <input type="button" class="btn btn-outline-primary" onclick="updateTeam()" value="Update Team"></input>
+                    </div>
+                    <div class="btn-group mr-2" role="group">
+                        <input type="button" class="btn btn-outline-primary" onclick="deleteTeam()" value="Delete Team"></input>
+                        <Input type="number" id="deleteTeamBox">
+                        </input>
+                    </div>
+
+                </div>
+
+                <!-- Race Log Section -->
+                <div>
+                    <hr></hr>
+                    <h3 class="text-centre text-primary">Race Log</h3>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Entry ID</span>
+                        </div>
+                        <input type="text" class="form-control col-12" id="entryIDBox1" placeholder=" - - - Please Enter EntryID - - - ">
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Race Number</span>
+                        </div>
+                        <input type="number" class="form-control col-12" id="raceNumberBox1" placeholder=" - - - Please Enter Race Number - - - ">
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Race Location</span>
+                        </div>
+                        <input type="text" class="form-control col-12" id="raceLocationBox1" placeholder=" - - - Please Enter Race Location - - - ">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rider ID</span>
+                        </div>
+                        <input type="text" class="form-control col-12" id="riderIDBox1" placeholder=" - - - Please Enter Rider ID - - - ">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Team ID</span>
+                        </div>
+                        <input type="text" class="form-control col-12" id="teamIDBox1" placeholder=" - - - Please Enter Team ID - - - ">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Race Position</span>
+                        </div>
+                        <input type="text" class="form-control col-12" id="racePositionBox1" placeholder=" - - - Please Enter Race Position - - - ">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Race Points</span>
+                        </div>
+                        <input type="text" class="form-control col-12" id="racePointsBox1" placeholder=" - - - Please Enter Race Points - - - ">
+                    </div>
+
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group mr-2" role="group">
+                            <input type="button" class="btn btn-outline-primary " onclick="createRaceLogEntry()" value="Create Entry"></input>
+                        </div>
+                        <div class="btn-group mr-2" role="group">
+                            <input type="button" class="btn btn-outline-primary" onclick="updateRaceLogEntry()" value="Update  Entry"></input>
+                        </div>
+                        <div class="btn-group mr-2" role="group">
+                            <input type="button" class="btn btn-outline-primary" onclick="deleteRaceLogEntry()" value="Delete Entry"></input>
+                            <Input type="number" id="deleteRaceLogEntryBox">
+                            </input>
+                        </div>
+
+                    </div>
+
+
+                    <script src="modify.js"></script>
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                        crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                        crossorigin="anonymous"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                        crossorigin="anonymous"></script>
+</body>
+
+</html>

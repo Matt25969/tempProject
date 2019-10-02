@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RidersService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MotoGPManager</a> &gt; <a href="index.source.html" class="el_package">com.bae.business</a> &gt; <span class="el_source">RidersService.java</span></div><h1>RidersService.java</h1><pre class="source lang-java linenums">package com.bae.business;
+
+import javax.inject.Inject;
+
+import com.bae.persistence.repository.Riders_Interface;
+import com.bae.util.JSONUtil;
+
+<span class="fc" id="L8">public class RidersService implements RidersService_Interface {</span>
+
+	@Inject
+	private JSONUtil util;
+
+	@Inject
+	Riders_Interface Riders;
+
+	@Override
+	public String getRiders() {
+<span class="fc" id="L18">		return Riders.getRiders();</span>
+	}
+
+	@Override
+	public String getSingleRider(int riderID) {
+<span class="fc" id="L23">		return Riders.getSingleRider(riderID);</span>
+	}
+
+	@Override
+	public String createRider(String rider) {
+<span class="fc" id="L28">		return Riders.createRider(rider);</span>
+	}
+
+	@Override
+	public String deleteRider(int riderID) {
+<span class="fc" id="L33">		return Riders.deleteRider(riderID);</span>
+	}
+
+	@Override
+	public String updateRider(int riderID, String rider) {
+<span class="fc" id="L38">		return Riders.updateRider(riderID, rider);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

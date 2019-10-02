@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TeamsMapRepository.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MotoGPManager</a> &gt; <a href="index.source.html" class="el_package">com.bae.persistence.repository</a> &gt; <span class="el_source">TeamsMapRepository.java</span></div><h1>TeamsMapRepository.java</h1><pre class="source lang-java linenums">package com.bae.persistence.repository;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.enterprise.inject.Alternative;
+import javax.inject.Inject;
+
+import com.bae.persistence.domain.Teams;
+import com.bae.util.JSONUtil;
+
+@Alternative
+<span class="nc" id="L13">public class TeamsMapRepository implements Teams_Interface {</span>
+<span class="nc" id="L14">	Map&lt;Integer, Teams&gt; teamMap = new HashMap&lt;Integer, Teams&gt;();</span>
+
+	@Inject
+	JSONUtil util;
+	
+	@Override
+	public String getTeams() {
+<span class="nc" id="L21">		return util.getJSONForObject(teamMap.values());</span>
+
+	}
+
+	@Override
+	public String getSingleTeam(int teamID) {
+<span class="nc" id="L27">		return util.getJSONForObject(teamMap.get(teamID));</span>
+	}
+
+	@Override
+	public String createTeam(String team) {
+<span class="nc" id="L32">		Teams t = util.getObjectForJSON(team, Teams.class);</span>
+<span class="nc" id="L33">		teamMap.put(t.getTeamID(), t);</span>
+<span class="nc" id="L34">		return &quot;Team Has Been Succesfully Added To The System&quot;;</span>
+	}
+
+	@Override
+	public String deleteTeam(int teamID) {
+<span class="nc" id="L39">		teamMap.remove(teamID);</span>
+<span class="nc" id="L40">		return &quot;Team Has Been Succesfully Removed From The System&quot;;</span>
+	}
+
+	@Override
+	public String updateTeam(int teamID, String team) {
+<span class="nc" id="L45">		Teams t = util.getObjectForJSON(team, Teams.class);</span>
+		
+<span class="nc bnc" id="L47" title="All 2 branches missed.">		if(teamMap.containsKey(teamID)) {</span>
+<span class="nc" id="L48">			teamMap.replace(teamID, t);</span>
+<span class="nc" id="L49">			return &quot;Team Has Been Succesfully Updated&quot;;</span>
+		}
+<span class="nc" id="L51">		return &quot;Warning: Rider Has NOT Been Succefully Updated&quot;;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

@@ -1,0 +1,15 @@
+
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+      http://xmlns.jcp.org/xml/ns/javaee
+      http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd" bean-discovery-mode="all">
+      
+     <!-- <alternatives>
+        <class>com.bae.persistance.repository.RiderMapRepository</class>
+        <class>com.bae.persistance.repository.TeamsMapRepository</class>
+        <class>com.bae.persistance.repository.RacelogMapRepository</class>
+        <class>com.bae.persistance.repository.ChampionshipRepository</class>
+    </alternatives>
+    -->
+</beans>

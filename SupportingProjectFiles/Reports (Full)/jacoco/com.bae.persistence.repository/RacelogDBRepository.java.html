@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RacelogDBRepository.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MotoGPManager</a> &gt; <a href="index.source.html" class="el_package">com.bae.persistence.repository</a> &gt; <span class="el_source">RacelogDBRepository.java</span></div><h1>RacelogDBRepository.java</h1><pre class="source lang-java linenums">package com.bae.persistence.repository;
+
+import static javax.transaction.Transactional.TxType.REQUIRED;
+
+import javax.enterprise.inject.Default;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
+
+import com.bae.persistence.domain.RaceLog;
+import com.bae.util.JSONUtil;
+
+@Default
+<span class="fc" id="L16">public class RacelogDBRepository implements Racelog_Interface {</span>
+
+	@PersistenceContext(unitName = &quot;primary&quot;)
+	private EntityManager manager;
+
+	@Inject
+	private JSONUtil util;
+
+	public String getRaceLog() {
+<span class="fc" id="L25">		Query query = manager.createQuery(&quot;SELECT l FROM RaceLog l&quot;, RaceLog.class);</span>
+<span class="fc" id="L26">		return util.getJSONForObject(query.getResultList());</span>
+	}
+
+	public String getRaceLogEntry(int entryID) {
+<span class="fc" id="L30">		return util.getJSONForObject(manager.find(RaceLog.class, entryID));</span>
+	}
+
+	@Transactional(REQUIRED)
+	public String createRaceLogEntry(String raceLogEntry) {
+<span class="fc" id="L35">		RaceLog newEntry = util.getObjectForJSON(raceLogEntry, RaceLog.class);</span>
+<span class="fc" id="L36">		manager.persist(newEntry);</span>
+<span class="fc" id="L37">		return &quot;{\&quot;message\&quot;; \&quot;Entry Has Been Succesfully Added To The System\&quot;}&quot;;</span>
+	}
+
+	@Transactional(REQUIRED)
+	public String deleteRaceLogEntry(int entryID) {
+<span class="fc bfc" id="L42" title="All 2 branches covered.">		if (manager.contains(manager.find(RaceLog.class, entryID))) {</span>
+<span class="fc" id="L43">			manager.remove(manager.find(RaceLog.class, entryID));</span>
+<span class="fc" id="L44">			return &quot;{\&quot;message\&quot;: \&quot;Entry Has Been Succesfully Removed From The System\&quot;}&quot;;</span>
+		}
+<span class="fc" id="L46">		return &quot;{\&quot;message\&quot;: \&quot;Entry Has NOT Been Succesfully Removed From The System\&quot;}&quot;;</span>
+	}
+
+	@Transactional(REQUIRED)
+	public String updateRaceLogEntry(int entryID, String raceLogEntry) {
+<span class="fc" id="L51">		RaceLog transLog = util.getObjectForJSON(raceLogEntry, RaceLog.class);</span>
+<span class="fc" id="L52">		RaceLog oldLog = manager.find(RaceLog.class, entryID);</span>
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">		if (oldLog != null) {</span>
+<span class="fc" id="L55">			oldLog.setRaceNumber(transLog.getRaceNumber());</span>
+<span class="fc" id="L56">			oldLog.setRaceLocation(transLog.getRaceLocation());</span>
+<span class="fc" id="L57">			oldLog.setRiderID(transLog.getRiderID());</span>
+<span class="fc" id="L58">			oldLog.setTeamID(transLog.getTeamID());</span>
+<span class="fc" id="L59">			oldLog.setRacePosition(transLog.getRacePosition());</span>
+<span class="fc" id="L60">			oldLog.setRacePoints(transLog.getRacePoints());</span>
+
+<span class="fc" id="L62">			manager.persist(oldLog);</span>
+<span class="fc" id="L63">			return &quot;{\&quot;message\&quot;: \&quot;Entry Has Been Succesfully Updated\&quot;}&quot;;</span>
+		}
+<span class="fc" id="L65">		return &quot;{\&quot;message\&quot;: \&quot;Entry Has NOT Been Succesfully Updated\&quot;}&quot;;</span>
+	}
+
+	public void setManager(EntityManager manager) {
+<span class="fc" id="L69">		this.manager = manager;</span>
+<span class="fc" id="L70">	}</span>
+
+	public void setUtil(JSONUtil util) {
+<span class="fc" id="L73">		this.util = util;</span>
+<span class="fc" id="L74">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
